@@ -53,28 +53,62 @@ class SinglyLinkedList:
     if index == 0:
       self.set_head(value)
       return
-    
-    new_node = Node(value)
-    previous_node = self.get(index - 1) 
 
-    if previous_node != None:
-      new_node.next = previous_node.next
-      previous_node.next = new_node
+    new_node = Node(value)
+    prev_node = self.get(index - 1) 
+
+    if prev_node != None:
+      new_node.next = prev_node.next
+      prev_node.next = new_node
       self.size += 1
     else:
       print('Index not present')
 
   def remove_head(self):
-    pass
+    if self.head == None:
+        return
+
+    self.size -= 1
+    self.head = self.head.next
 
   def remove_tail(self):
-    pass
+    if self.head == None:
+        return
+
+    current_node = self.head
+    while current_node.next.next:
+      current_node = current_node.next
+
+    self.size -= 1
+    current_node.next = None
 
   def remove(self, index):
-    pass
+    if index < 0 or index >= self.size:
+      return None
+
+    if index == 0:
+      self.remove_head()
+      return
+
+    if index == self.size - 1:
+      self.remove_tail()
+      return
+
+    prev_node = self.get(index - 1)
+    removed_node = prev_node.next
+    prev_node.next = removed_node.next
+    self.size -= 1
+
+    return removed_node
 
   def update(self, index, value):
-    pass
+    found_node = self.get(index)
+
+    if found_node:
+      found_node.value = value
+      return true
+
+    return false
 
   def print(self):
     current_node = self.head
