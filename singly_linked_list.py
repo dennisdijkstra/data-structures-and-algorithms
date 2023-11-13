@@ -51,7 +51,7 @@ class SinglyLinkedList:
       return None
 
     if index == 0:
-      self.set_head(value)
+      self.insert_head(value)
       return
 
     new_node = Node(value)
