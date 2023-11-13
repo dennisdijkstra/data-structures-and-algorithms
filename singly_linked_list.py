@@ -106,9 +106,9 @@ class SinglyLinkedList:
 
     if found_node:
       found_node.value = value
-      return true
+      return True
 
-    return false
+    return False
 
   def print(self):
     current_node = self.head
