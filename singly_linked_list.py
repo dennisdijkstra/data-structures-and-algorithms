@@ -9,13 +9,13 @@ class SinglyLinkedList:
     self.size = 0
 
   def get(self, index):
-    if index < 0 or index >= self.size:
+    if index < 0 or index > self.size:
       return None
     
     current_node = self.head
     counter = 0
 
-    while current_node != None and counter + 1 != index:
+    while current_node != None and counter != index:
       counter += 1
       current_node = current_node.next
 
@@ -36,6 +36,7 @@ class SinglyLinkedList:
     new_node = Node(value)
     if self.head is None:
       self.head = new_node
+      self.size += 1
       return
     
     current_node = self.head
@@ -47,7 +48,7 @@ class SinglyLinkedList:
     return current_node
 
   def insert(self, value, index):
-    if index < 0 or index >= self.size:
+    if index < 0 or index > self.size:
       return None
 
     if index == 0:
@@ -101,7 +102,7 @@ class SinglyLinkedList:
 
     return removed_node
 
-  def update(self, index, value):
+  def update(self, value, index):
     found_node = self.get(index)
 
     if found_node:
