@@ -109,7 +109,3 @@ def test_singly_linked_list_get_out_of_range():
   some_node = linked_list.get(5)
 
   assert some_node == None
-  
-  
-  
-  
