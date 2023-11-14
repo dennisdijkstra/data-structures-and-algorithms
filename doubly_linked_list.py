@@ -86,16 +86,52 @@ class DoublyLinkedList:
     return new_node
 
   def remove_head(self):
-    pass
+    if self.head == None:
+      return
+
+    self.head = self.head.next
+    self.head.prev = None
+    self.size -= 1
 
   def remove_tail(self):
-    pass
+    if self.head == None:
+      return
+    
+    current_node = self.tail
+    self.tail = current_node.prev
+    self.tail.next = None
+    self.size -= 1
 
   def remove(self, index):
-    pass
+    if index < 0 or index >= self.size:
+      return None
+
+    if index == 0:
+      self.remove_head()
+      return
+
+    if index == self.size - 1:
+      self.remove_tail()
+      return
+
+    prev_node = self.get(index - 1)
+    removed_node = prev_node.next
+    prev_node.next = removed_node.next
+    self.size -= 1
+
+    return removed_node
 
   def update(self, index, value):
-    pass
+    found_node = self.get(index)
+
+    if found_node:
+      found_node.value = value
+      return True
+
+    return False
 
   def print(self):
-    pass
+    current_node = self.head
+    while current_node:
+      print(current_node.value)
+      current_node = current_node.next

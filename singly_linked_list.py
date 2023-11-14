@@ -114,5 +114,5 @@ class SinglyLinkedList:
   def print(self):
     current_node = self.head
     while current_node:
-        print(current_node.value)
-        current_node = current_node.next
+      print(current_node.value)
+      current_node = current_node.next
