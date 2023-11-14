@@ -11,7 +11,7 @@ class DoublyLinkedList:
     self.size = 0
 
   def get(self, index):
-    if index < 0 or index >= self.size:
+    if index < 0 or index > self.size:
       return None
 
     current_node = None
@@ -58,17 +58,17 @@ class DoublyLinkedList:
       self.tail = new_node
 
     self.size += 1
-    return self.head
+    return self.tail
 
   def insert(self, value, index):
-    if index < 0 or index >= self.size:
+    if index < 0 or index > self.size:
       return None
 
     if index == 0:
       self.insert_head(value)
       return
 
-    if index == self.size - 1:
+    if index == self.size:
       self.insert_tail(value)
       return
 
@@ -76,7 +76,7 @@ class DoublyLinkedList:
     prev_node = self.get(index - 1)
     next_node = prev_node.next
 
-    if prev_node != None:
+    if prev_node != None and next_node != None:
       prev_node.next = new_node
       new_node.prev = prev_node
       new_node.next = next_node
@@ -121,7 +121,7 @@ class DoublyLinkedList:
 
     return removed_node
 
-  def update(self, index, value):
+  def update(self, value, index):
     found_node = self.get(index)
 
     if found_node:
