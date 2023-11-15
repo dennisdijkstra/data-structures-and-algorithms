@@ -110,3 +110,12 @@ def test_bst_post_order_traverse():
   list = []
   bst.post_order(list, True)
   assert list == [3, 7, 8, 8, 5, 100, 20, 9, 2]
+
+def test_bst_contains():
+  bst = BinarySearchTree()
+  node = bst.insert(2)
+  bst.insert(9)
+  bst.insert(5)
+  bst.insert(20)
+
+  assert bst.contains(node) == True

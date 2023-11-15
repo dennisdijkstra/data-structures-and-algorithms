@@ -15,8 +15,8 @@ class BinarySearchTree:
     if self.root is None:
       self.root = new_node
       self.size += 1
-      return
-    
+      return new_node
+
     current_node = self.root
     while current_node:      
       if value < current_node.value:
@@ -34,7 +34,9 @@ class BinarySearchTree:
         else:
           current_node.right = new_node
           self.size += 1
-          break  
+          break
+
+    return new_node
   
   def find(self, value):
     if self.root is None:
@@ -67,9 +69,19 @@ class BinarySearchTree:
   
   def remove(self):
     pass
-  
-  def contains(self):
-    pass
+
+  def contains(self, node):
+    current_node = self.root
+    while current_node:
+      if current_node == node:
+          return True
+
+      if node.value < current_node.value:
+        current_node = current_node.left
+      else:
+        current_node = current_node.right
+
+    return False
 
   def in_order(self, list, isRoot, node = None):
     if isRoot:
