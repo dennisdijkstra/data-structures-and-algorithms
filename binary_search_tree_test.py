@@ -62,3 +62,51 @@ def test_bst_find_max():
 
   assert bst.size == 4
   assert max_node.value == values[1]
+
+def test_bst_in_order_traverse():
+  bst = BinarySearchTree()
+  bst.insert(2)
+  bst.insert(9)
+  bst.insert(5)
+  bst.insert(20)
+  bst.insert(8)
+  bst.insert(7)
+  bst.insert(8)
+  bst.insert(3)
+  bst.insert(100)
+
+  list = []
+  bst.in_order(list, True)
+  assert list == [2, 3, 5, 7, 8, 8, 9, 20, 100]
+
+def test_bst_pre_order_traverse():
+  bst = BinarySearchTree()
+  bst.insert(2)
+  bst.insert(9)
+  bst.insert(5)
+  bst.insert(20)
+  bst.insert(8)
+  bst.insert(7)
+  bst.insert(8)
+  bst.insert(3)
+  bst.insert(100)
+
+  list = []
+  bst.pre_order(list, True)
+  assert list == [2, 9, 5, 3, 8, 7, 8, 20, 100]
+
+def test_bst_post_order_traverse():
+  bst = BinarySearchTree()
+  bst.insert(2)
+  bst.insert(9)
+  bst.insert(5)
+  bst.insert(20)
+  bst.insert(8)
+  bst.insert(7)
+  bst.insert(8)
+  bst.insert(3)
+  bst.insert(100)
+
+  list = []
+  bst.post_order(list, True)
+  assert list == [3, 7, 8, 8, 5, 100, 20, 9, 2]

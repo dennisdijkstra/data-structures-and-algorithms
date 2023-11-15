@@ -18,10 +18,7 @@ class BinarySearchTree:
       return
     
     current_node = self.root
-    while current_node:
-      if value == current_node.value:
-        return
-      
+    while current_node:      
       if value < current_node.value:
         if current_node.left:
           current_node = current_node.left
@@ -74,11 +71,35 @@ class BinarySearchTree:
   def contains(self):
     pass
 
-  def pre_order(self):
-    pass
+  def in_order(self, list, isRoot, node = None):
+    if isRoot:
+      node = self.root
 
-  def in_order(self):
-    pass
+    if node is None:
+      return
 
-  def post_order(self):
-    pass
+    self.in_order(list, False, node.left)
+    list.append(node.value)
+    self.in_order(list, False, node.right)
+
+  def pre_order(self, list, isRoot, node = None):
+    if isRoot:
+      node = self.root
+
+    if node is None:
+      return
+
+    list.append(node.value)
+    self.pre_order(list, False, node.left)
+    self.pre_order(list, False, node.right)
+
+  def post_order(self, list, isRoot, node = None):
+    if isRoot:
+      node = self.root
+
+    if node is None:
+      return
+
+    self.post_order(list, False, node.left)
+    self.post_order(list, False, node.right)
+    list.append(node.value)
