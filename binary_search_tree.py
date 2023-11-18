@@ -67,8 +67,11 @@ class BinarySearchTree:
 
     return current_node
   
-  def remove(self):
-    pass
+  def remove(self, value):
+    node_to_remove = self.find(value)
+
+    if node_to_remove is None:
+      return None
 
   def contains(self, node):
     current_node = self.root
