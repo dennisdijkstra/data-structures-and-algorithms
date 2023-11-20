@@ -2,6 +2,9 @@ class Graph:
   def __init__(self):
     self.graph = {}
     self.size = 0
+    
+  def get_edges(self):
+    pass
 
   def add_node(self, node):
     if node not in self.graph:
