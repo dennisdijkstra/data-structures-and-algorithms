@@ -1,8 +1,9 @@
 import math
 
 class MinHeap:
-  def __init__(self):
+  def __init__(self, comparator = lambda a,b: a < b):
     self.heap = []
+    self.comparator = comparator
 
   def build(self, list):
     self.heap = list
@@ -36,10 +37,10 @@ class MinHeap:
       smallest_child_index = left_child_index
       right_child_index = self.get_child_index(index, 2)
       
-      if right_child_index != -1 and self.heap[right_child_index] < self.heap[left_child_index]:
+      if right_child_index != -1 and self.comparator(self.heap[right_child_index], self.heap[left_child_index]):
         smallest_child_index = right_child_index
         
-      if self.heap[smallest_child_index] < self.heap[index]:
+      if self.comparator(self.heap[smallest_child_index], self.heap[index]):
         self.swap(smallest_child_index, index)
         index = smallest_child_index
         left_child_index = self.get_child_index(index, 1)
@@ -49,7 +50,7 @@ class MinHeap:
   def heapify_up(self, index):
     parent_index = self.get_parent_index(index)
 
-    while index > 0 and self.heap[index] < self.heap[parent_index]:
+    while index > 0 and self.comparator(self.heap[index], self.heap[parent_index]):
       self.swap(index, parent_index)
       index = parent_index
       parent_index = self.get_parent_index(index)
