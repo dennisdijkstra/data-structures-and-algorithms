@@ -3,11 +3,22 @@ class Stack:
     self.stack = []
     self.size = 0
 
+  def size(self):
+    return self.size
+
   def push(self, value):
-    pass
+    self.stack.append(value)
+    self.size += 1
 
   def pop(self):
-    pass
+    self.stack.pop()
+    self.size -= 1
 
   def peek(self):
-    pass
+    if self.is_empty():
+      return None
+
+    return self.stack[-1]
+
+  def is_empty(self):
+    return self.size == 0
