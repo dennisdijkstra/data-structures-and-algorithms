@@ -1,16 +1,20 @@
 class Queue:  
   def __init__(self):  
     self.queue = list()
+    self.size = 0
 
   def size(self):  
     return len(self.queue) 
 
-  def add(self,value):  
-    self.queue.insert(0, value)  
+  def enqueue(self,value):
+    self.queue.insert(0, value)
+    self.size += 1
 
-  def remove(self):
+  def dequeue(self):
     if len(self.queue) > 0:
+      self.size -= 1
       return self.queue.pop()
+
     return ('Queue is empty')
   
   def peek(self):
