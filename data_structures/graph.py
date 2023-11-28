@@ -1,33 +1,33 @@
 class Graph:
   def __init__(self):
-    self.graph = {}
+    self.vertices = {}
     self.size = 0
     
-  def get_edges(self):
-    pass
+  def get_vertex(self, key):
+    return self.vertices[key]
 
-  def add_node(self, node):
-    if node not in self.graph:
-      self.graph[node] = []
+  def add_vertex(self, vertex):
+    if vertex not in self.vertices:
+      self.vertices[vertex] = []
       self.size += 1
 
-  def remove_node(self, node):
-    if self.graph[node] is None:
+  def remove_vertex(self, vertex):
+    if self.vertices[vertex] is None:
       return None
 
-    for key in self.graph:
-      self.remove_edge(key, node)
+    for key in self.vertices:
+      self.remove_edge(key, vertex)
 
-    del self.graph[node]
+    del self.vertices[vertex]
     self.size -= 1
 
-  def add_edge(self, from_node, to_node):
-    self.graph[from_node].append(to_node)
-    self.graph[to_node].append(from_node)
+  def add_edge(self, from_vertex, to_vertex):
+    self.vertices[from_vertex].append(to_vertex)
+    self.vertices[to_vertex].append(from_vertex)
 
-  def remove_edge(self, from_node, to_node):
-    if to_node in self.graph[from_node]:
-      self.graph[from_node].remove(to_node)
+  def remove_edge(self, from_vertex, to_vertex):
+    if to_vertex in self.vertices[from_vertex]:
+      self.vertices[from_vertex].remove(to_vertex)
 
-    if from_node in self.graph[to_node]:
-      self.graph[to_node].remove(from_node)
+    if from_vertex in self.vertices[to_vertex]:
+      self.vertices[to_vertex].remove(from_vertex)
