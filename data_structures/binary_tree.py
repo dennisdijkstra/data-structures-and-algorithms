@@ -8,6 +8,9 @@ class BinaryTree:
   def __init__(self):
       self.root = None
       self.size = 0
+
+  def getRoot(self):
+    return self.root
   
   def insert(self, value):
     node = Node(value)
@@ -35,3 +38,36 @@ class BinaryTree:
         break
       else:
         queue.append(current_node.right)
+
+  def in_order(self, list, isRoot, node = None):
+    if isRoot:
+      node = self.root
+
+    if node is None:
+      return
+
+    self.in_order(list, False, node.left)
+    list.append(node.value)
+    self.in_order(list, False, node.right)
+
+  def pre_order(self, list, isRoot, node = None):
+    if isRoot:
+      node = self.root
+
+    if node is None:
+      return
+
+    list.append(node.value)
+    self.pre_order(list, False, node.left)
+    self.pre_order(list, False, node.right)
+
+  def post_order(self, list, isRoot, node = None):
+    if isRoot:
+      node = self.root
+
+    if node is None:
+      return
+
+    self.post_order(list, False, node.left)
+    self.post_order(list, False, node.right)
+    list.append(node.value)
