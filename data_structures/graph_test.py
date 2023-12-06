@@ -22,8 +22,8 @@ def test_graph_add_edge():
   graph.add_vertex(vertex_a)
   graph.add_vertex(vertex_b)
   graph.add_vertex(vertex_c)
-  graph.add_edge(vertex_a, vertex_b)
-  graph.add_edge(vertex_a, vertex_c)
+  graph.add_edge(vertex_a, vertex_b, 1)
+  graph.add_edge(vertex_a, vertex_c, 1)
 
   assert len(graph.vertices[vertex_a]) == 2
   assert len(graph.vertices[vertex_b]) == 1
@@ -38,8 +38,8 @@ def test_graph_remove_vertex():
   graph.add_vertex(vertex_a)
   graph.add_vertex(vertex_b)
   graph.add_vertex(vertex_c)
-  graph.add_edge(vertex_a, vertex_b)
-  graph.add_edge(vertex_a, vertex_c)
+  graph.add_edge(vertex_a, vertex_b, 1)
+  graph.add_edge(vertex_a, vertex_c, 1)
   graph.remove_vertex(vertex_b)
 
   assert len(graph.vertices[vertex_a]) == 1
@@ -52,7 +52,7 @@ def test_graph_remove_edge():
   vertex_b = 'B'
   graph.add_vertex(vertex_a)
   graph.add_vertex(vertex_b)
-  graph.add_edge(vertex_a, vertex_b)
+  graph.add_edge(vertex_a, vertex_b, 1)
   graph.remove_edge(vertex_a, vertex_b)
 
   assert len(graph.vertices[vertex_a]) == 0

@@ -1,6 +1,7 @@
 class Graph:
   def __init__(self):
     self.vertices = {}
+    self.weights = {}
     self.size = 0
     
   def get_vertex(self, key):
@@ -21,9 +22,11 @@ class Graph:
     del self.vertices[vertex]
     self.size -= 1
 
-  def add_edge(self, from_vertex, to_vertex):
+  def add_edge(self, from_vertex, to_vertex, weight):
     self.vertices[from_vertex].append(to_vertex)
     self.vertices[to_vertex].append(from_vertex)
+    self.weights[(from_vertex, to_vertex)] = weight
+    self.weights[(to_vertex, from_vertex)] = weight
 
   def remove_edge(self, from_vertex, to_vertex):
     if to_vertex in self.vertices[from_vertex]:
