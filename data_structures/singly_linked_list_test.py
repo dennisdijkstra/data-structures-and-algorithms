@@ -1,4 +1,4 @@
-from singly_linked_list import SinglyLinkedList
+from data_structures.singly_linked_list import SinglyLinkedList
 
 def test_singly_linked_list_init():
   linked_list = SinglyLinkedList()

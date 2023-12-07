@@ -1,4 +1,4 @@
-from graph import Graph
+from data_structures.graph import Graph
 
 def test_graph_init():
   graph = Graph()

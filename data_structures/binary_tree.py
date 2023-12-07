@@ -1,4 +1,4 @@
-from queue_ import Queue
+from data_structures.queue_ import Queue
 
 class Node:
   def __init__(self, value):

@@ -1,4 +1,4 @@
-from max_heap import MaxHeap
+from data_structures.max_heap import MaxHeap
 
 def test_max_heap_init():
   heap = MaxHeap()

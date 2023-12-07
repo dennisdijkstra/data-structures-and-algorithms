@@ -1,4 +1,4 @@
-from binary_tree import BinaryTree
+from data_structures.binary_tree import BinaryTree
 
 def test_binary_tree_init():
   binary_tree = BinaryTree()

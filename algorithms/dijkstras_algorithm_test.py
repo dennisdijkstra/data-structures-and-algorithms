@@ -1,10 +1,9 @@
-import sys
-sys.path.append("..")
 from dijkstras_algorithm import dijkstra
-from data_structures import Graph
+from data_structures.graph import Graph
 
 def test_dijkstras_algorithm():
   graph = Graph()
+  print(graph)
   vertices = ['X', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'Y']
 
   for vertex in vertices:

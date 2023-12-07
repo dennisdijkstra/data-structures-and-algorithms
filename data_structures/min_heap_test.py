@@ -1,4 +1,4 @@
-from min_heap import MinHeap
+from data_structures.min_heap import MinHeap
 
 def test_min_heap_init():
   heap = MinHeap()

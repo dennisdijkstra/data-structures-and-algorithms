@@ -1,4 +1,4 @@
-from queue_ import Queue
+from data_structures.queue_ import Queue
 
 def test_queue_init():
   queue = Queue()
