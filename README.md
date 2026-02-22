@@ -1,6 +1,6 @@
 # Python Data Structures & Algorithms
 
-Educational implementation of common data structures and algorithms in Python.
+Implementation of common data structures and algorithms in Python.
 
 ## Tech Stack
 
