@@ -1,36 +1,36 @@
 class Graph:
-  def __init__(self):
-    self.vertices = {}
-    self.weights = {}
-    self.size = 0
-    
-  def get_vertex(self, key):
-    return self.vertices[key]
+    def __init__(self):
+        self.vertices = {}
+        self.weights = {}
+        self.size = 0
 
-  def add_vertex(self, vertex):
-    if vertex not in self.vertices:
-      self.vertices[vertex] = []
-      self.size += 1
+    def get_vertex(self, key):
+        return self.vertices[key]
 
-  def remove_vertex(self, vertex):
-    if self.vertices[vertex] is None:
-      return None
+    def add_vertex(self, vertex):
+        if vertex not in self.vertices:
+            self.vertices[vertex] = []
+            self.size += 1
 
-    for key in self.vertices:
-      self.remove_edge(key, vertex)
+    def remove_vertex(self, vertex):
+        if self.vertices[vertex] is None:
+            return None
 
-    del self.vertices[vertex]
-    self.size -= 1
+        for key in self.vertices:
+            self.remove_edge(key, vertex)
 
-  def add_edge(self, from_vertex, to_vertex, weight):
-    self.vertices[from_vertex].append(to_vertex)
-    self.vertices[to_vertex].append(from_vertex)
-    self.weights[(from_vertex, to_vertex)] = weight
-    self.weights[(to_vertex, from_vertex)] = weight
+        del self.vertices[vertex]
+        self.size -= 1
 
-  def remove_edge(self, from_vertex, to_vertex):
-    if to_vertex in self.vertices[from_vertex]:
-      self.vertices[from_vertex].remove(to_vertex)
+    def add_edge(self, from_vertex, to_vertex, weight):
+        self.vertices[from_vertex].append(to_vertex)
+        self.vertices[to_vertex].append(from_vertex)
+        self.weights[(from_vertex, to_vertex)] = weight
+        self.weights[(to_vertex, from_vertex)] = weight
 
-    if from_vertex in self.vertices[to_vertex]:
-      self.vertices[to_vertex].remove(from_vertex)
+    def remove_edge(self, from_vertex, to_vertex):
+        if to_vertex in self.vertices[from_vertex]:
+            self.vertices[from_vertex].remove(to_vertex)
+
+        if from_vertex in self.vertices[to_vertex]:
+            self.vertices[to_vertex].remove(from_vertex)

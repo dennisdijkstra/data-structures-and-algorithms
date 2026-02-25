@@ -1,89 +1,91 @@
 from data_structures.queue_ import Queue
 
+
 class Node:
-  def __init__(self, value):
-    self.left = None
-    self.right = None
-    self.value = value
+    def __init__(self, value):
+        self.left = None
+        self.right = None
+        self.value = value
+
 
 class BinaryTree:
-  def __init__(self):
-      self.root = None
-      self.size = 0
+    def __init__(self):
+        self.root = None
+        self.size = 0
 
-  def getRoot(self):
-    return self.root
-  
-  def insert(self, value):
-    node = Node(value)
+    def getRoot(self):
+        return self.root
 
-    if self.root is None:
-      self.root = node
-      self.size += 1
-      return
+    def insert(self, value):
+        node = Node(value)
 
-    queue = [self.root]
+        if self.root is None:
+            self.root = node
+            self.size += 1
+            return
 
-    while queue:
-      current_node = queue.pop(0)
+        queue = [self.root]
 
-      if current_node.left is None:
-        current_node.left = node
-        self.size += 1
-        break
-      else:
-        queue.append(current_node.left)
+        while queue:
+            current_node = queue.pop(0)
 
-      if current_node.right is None:
-        current_node.right = node
-        self.size += 1
-        break
-      else:
-        queue.append(current_node.right)
+            if current_node.left is None:
+                current_node.left = node
+                self.size += 1
+                break
+            else:
+                queue.append(current_node.left)
 
-  def in_order(self, list, isRoot, node = None):
-    if isRoot:
-      node = self.root
+            if current_node.right is None:
+                current_node.right = node
+                self.size += 1
+                break
+            else:
+                queue.append(current_node.right)
 
-    if node is None:
-      return
+    def in_order(self, list, isRoot, node=None):
+        if isRoot:
+            node = self.root
 
-    self.in_order(list, False, node.left)
-    list.append(node.value)
-    self.in_order(list, False, node.right)
+        if node is None:
+            return
 
-  def pre_order(self, list, isRoot, node = None):
-    if isRoot:
-      node = self.root
+        self.in_order(list, False, node.left)
+        list.append(node.value)
+        self.in_order(list, False, node.right)
 
-    if node is None:
-      return
+    def pre_order(self, list, isRoot, node=None):
+        if isRoot:
+            node = self.root
 
-    list.append(node.value)
-    self.pre_order(list, False, node.left)
-    self.pre_order(list, False, node.right)
+        if node is None:
+            return
 
-  def post_order(self, list, isRoot, node = None):
-    if isRoot:
-      node = self.root
+        list.append(node.value)
+        self.pre_order(list, False, node.left)
+        self.pre_order(list, False, node.right)
 
-    if node is None:
-      return
+    def post_order(self, list, isRoot, node=None):
+        if isRoot:
+            node = self.root
 
-    self.post_order(list, False, node.left)
-    self.post_order(list, False, node.right)
-    list.append(node.value)
-    
-  def bfs(self):
-    queue = Queue()
-    queue.enqueue(self.root)
+        if node is None:
+            return
 
-    while(queue.size > 0):
-      print(queue.peek().value)
-      node = queue.dequeue()
+        self.post_order(list, False, node.left)
+        self.post_order(list, False, node.right)
+        list.append(node.value)
 
-      if node.left is not None:
-        queue.enqueue(node.left)
+    def bfs(self):
+        queue = Queue()
+        queue.enqueue(self.root)
 
-      if node.right is not None:
-        queue.enqueue(node.right)
+        while queue.size > 0:
+            print(queue.peek().value)
+            node = queue.dequeue()
+
+            if node.left is not None:
+                queue.enqueue(node.left)
+
+            if node.right is not None:
+                queue.enqueue(node.right)
